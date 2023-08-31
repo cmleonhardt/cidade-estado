@@ -11,8 +11,17 @@ import {HomeComponent} from './pages/home/home.component';
 import {ProfileComponent} from './pages/profile/profile.component';
 import {TasksComponent} from './pages/tasks/tasks.component';
 import {DxDataGridModule, DxFormModule, DxSelectBoxModule} from 'devextreme-angular';
+import {TestePageComponent} from "./pages/teste-page/teste-page.component";
+import {
+  SelectBoxCidadeEstadoModule
+} from "./shared/components/select-box-cidade-estado/select-box-cidade-estado.component";
 
 const routes: Routes = [
+  {
+    path: 'teste',
+    component: TestePageComponent,
+    canActivate: [ AuthGuardService ]
+  },
   {
     path: 'tasks',
     component: TasksComponent,
@@ -55,13 +64,23 @@ const routes: Routes = [
 ];
 
 @NgModule({
-    imports: [RouterModule.forRoot(routes, {useHash: true}), DxDataGridModule, DxFormModule, DxSelectBoxModule],
+  imports: [RouterModule.forRoot(routes,
+    {useHash: true}),
+    DxDataGridModule,
+    DxFormModule,
+    DxSelectBoxModule,
+    SelectBoxCidadeEstadoModule
+  ],
+
   providers: [AuthGuardService],
+
   exports: [RouterModule],
+
   declarations: [
     HomeComponent,
     ProfileComponent,
-    TasksComponent
+    TasksComponent,
+    TestePageComponent
   ]
 })
 export class AppRoutingModule { }

@@ -1,7 +1,7 @@
 import { Component, HostBinding } from '@angular/core';
 import { AuthService, ScreenService, AppInfoService } from './shared/services';
 
-import {SelCidadeEstadoComponent} from "./shared/components/sel-cidade-estado/sel-cidade-estado.component";
+import {SelectBoxCidadeEstadoComponent} from "./shared/components/select-box-cidade-estado/select-box-cidade-estado.component";
 
 @Component({
   selector: 'app-root',

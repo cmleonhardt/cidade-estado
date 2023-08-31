@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import { AppModule} from "../../app.module";
 
-import {SelCidadeEstadoComponent} from "../../shared/components/sel-cidade-estado/sel-cidade-estado.component";
+import {SelectBoxCidadeEstadoComponent} from "../../shared/components/select-box-cidade-estado/select-box-cidade-estado.component";
 
 
 @Component({

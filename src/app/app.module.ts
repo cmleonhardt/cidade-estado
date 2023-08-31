@@ -3,22 +3,19 @@ import {BrowserModule} from '@angular/platform-browser';
 
 import {AppComponent} from './app.component';
 import {SideNavInnerToolbarModule, SideNavOuterToolbarModule, SingleCardModule} from './layouts';
-import {  ChangePasswordFormModule,  CreateAccountFormModule,  FooterModule,  LoginFormModule,  ResetPasswordFormModule} from './shared/components';
+import {  ChangePasswordFormModule, CreateAccountFormModule, FooterModule, LoginFormModule, ResetPasswordFormModule} from './shared/components';
 import {AppInfoService, AuthService, ScreenService} from './shared/services';
 import {UnauthenticatedContentModule} from './unauthenticated-content';
 import {CidadeEstadoService} from "./shared/services/cidade-estado.service";
 import {DxSelectBoxModule} from "devextreme-angular";
-import {Routes} from "@angular/router";
 import {HttpClientModule} from "@angular/common/http";
 import {AppRoutingModule} from "./app-routing.module";
-import {SelCidadeEstadoComponent} from "./shared/components/sel-cidade-estado/sel-cidade-estado.component";
-
+import {  SelectBoxCidadeEstadoModule} from "./shared/components/select-box-cidade-estado/select-box-cidade-estado.component";
 
 
 @NgModule({
   declarations: [
-    AppComponent,
-    SelCidadeEstadoComponent
+    AppComponent
 
   ],
   imports: [
@@ -34,7 +31,8 @@ import {SelCidadeEstadoComponent} from "./shared/components/sel-cidade-estado/se
     UnauthenticatedContentModule,
     DxSelectBoxModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
+    SelectBoxCidadeEstadoModule
   ],
   providers: [
     AuthService,
@@ -42,9 +40,7 @@ import {SelCidadeEstadoComponent} from "./shared/components/sel-cidade-estado/se
     AppInfoService,
     CidadeEstadoService
   ],
-  exports: [
-    SelCidadeEstadoComponent
-  ],
+
   bootstrap: [AppComponent]
 })
 export class AppModule { }

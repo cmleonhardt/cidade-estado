@@ -1,0 +1,35 @@
+<form>
+
+  <div>
+
+    <dx-select-box
+      [dataSource]  = " estadoArray "
+      valorExpr = "id"
+      displayExpr= "nome"
+      [searchEnabled]="true"
+      (onValueChanged) = "onValueChanged($event)"
+      label = "Estados"
+      [dropDownOptions]="dropDownOptions"
+      labelMode="floating">
+
+    </dx-select-box>
+
+  </div>
+
+
+  <div>
+
+    <dx-select-box
+      [dataSource]  = " municipioArray "
+      valorExpr = "id"
+      displayExpr= "nome"
+      [searchEnabled]="true"
+      label = "Municipios"
+      [dropDownOptions]="dropDownOptions"
+      labelMode="floating">
+
+    </dx-select-box>
+
+  </div>
+
+</form>
