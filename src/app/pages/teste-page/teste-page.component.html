@@ -2,10 +2,12 @@
 
 <div>
 
-  <select-box-cidade-estado>
+  <select-box-cidade-estado
+      (municipioSelecionado)="recebeMunicipio($event)"
 
+      (estadoSelecionado)="recebeEstado($event)"
 
-  </select-box-cidade-estado>
+  ></select-box-cidade-estado>
 
 
 </div>

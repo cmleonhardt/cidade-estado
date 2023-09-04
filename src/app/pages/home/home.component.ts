@@ -16,8 +16,8 @@ export class HomeComponent {
   // dropDownOptions = { height:150 }
 
   /** Segunaa fase de teste que funcionou , transferimos para o componente*/
-  // public estadoArray: Estados[];
-  // public municipioArray: Municipios[];
+  // public estadoArray: Estado[];
+  // public municipioArray: Municipio[];
 
 
 

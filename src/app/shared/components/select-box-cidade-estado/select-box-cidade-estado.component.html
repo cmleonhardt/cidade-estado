@@ -1,20 +1,35 @@
 <form>
 
-  <div>
 
-    <dx-select-box
-      [dataSource]  = " estadoArray "
-      valorExpr = "id"
-      displayExpr= "nome"
-      [searchEnabled]="true"
-      (onValueChanged) = "onValueChanged($event)"
-      label = "Estados"
-      [dropDownOptions]="dropDownOptions"
-      labelMode="floating">
+<!--  <div class="dx-field">-->
+<!--    <div class="dx-field-label">ESTADOS</div>-->
+<!--    <div class="dx-field-value">-->
+<!--      <dx-select-box-->
+<!--        displayExpr="getDisplayValue"-->
+<!--        valueExpr="id"-->
+<!--        [dataSource] = "estadoArray"-->
+<!--        [inputAttr]="{ 'aria-label': 'estadoArray id' }"-->
+<!--        [value]="estadoArray[16].id"-->
+<!--        (onValueChanged) = "onValueChanged($event)"-->
+<!--      ></dx-select-box>-->
+<!--    </div>-->
+<!--  </div>-->
 
-    </dx-select-box>
 
-  </div>
+    <div class="dx-field">
+      <div class="dx-field-label">ESTADOS</div>
+      <div class="dx-field-value">
+        <dx-select-box
+          [dataSource]  = "estadoArray"
+          displayExpr= "getDisplayValue"
+          [searchEnabled]="true"
+          (onValueChanged) = "onValueChanged($event)"
+          label = "Estado"
+          [dropDownOptions]="dropDownOptions"
+          labelMode="floating"
+        ></dx-select-box>
+      </div>
+    </div>
 
 
   <div>
@@ -24,11 +39,11 @@
       valorExpr = "id"
       displayExpr= "nome"
       [searchEnabled]="true"
-      label = "Municipios"
+      label = "Municipio"
       [dropDownOptions]="dropDownOptions"
-      labelMode="floating">
-
-    </dx-select-box>
+      labelMode="floating"
+      (onValueChanged)="onValueChangedMunicipio($event)"
+    ></dx-select-box>
 
   </div>
 

@@ -8,5 +8,16 @@ import {Component} from '@angular/core';
 
 export class TestePageComponent {
 
+  // recebeMunicipio: string;
+  // recebeEstado: string;
+
   constructor() {  }
+
+  recebeEstado(e){
+
+  }
+
+  recebeMunicipio(e){
+    
+  }
 }

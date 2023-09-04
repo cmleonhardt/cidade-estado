@@ -1,63 +1,43 @@
 import {Injectable} from "@angular/core";
 import {HttpClient} from "@angular/common/http";
-import {Estados} from "./estados";
-import {Observable} from "rxjs";
-import {Municipios} from "./municipios";
-
-// export class Item {
-//   ID: number;
-//   Nome: string ;
-//   Categoria: string;
-//
-// }
-//
-// export class Est{
-//   ID: number;
-//   Nome: String;
-//   Sigla: String;
-//
-// }
-
-// const itens: Item [] = [{
-//   ID: 1,
-//   Nome: 'Banana',
-//   Categoria: 'Frutas',
-// }, {
-//   ID: 2,
-//   Nome: 'Pepino',
-//   Categoria: 'Legumes',
-// },{
-//   ID : 3 ,
-//   Nome : 'Apple' ,
-//   Categoria : 'Frutas' ,
-// }, {
-//   ID : 4 ,
-//   Nome : 'Tomate' ,
-//   Categoria : 'Legumes' ,
-// }, {
-//   ID: 5,
-//   Nome: 'Damasco',
-//   Categoria: 'Frutas',
-// }]
+import {Estado} from "../../model/estado";
+import {map, Observable} from "rxjs";
+import {Municipio} from "../../model/municipio";
 
 @Injectable()
 export class CidadeEstadoService {
 
-  // private readonly api = 'https://servicodados.ibge.gov.br/api/v1/localidades/estados';
+  private readonly api = 'https://servicodados.ibge.gov.br/api/v1/localidades/estados';
 
   constructor(private http: HttpClient) {
   }
 
-  estadolist(): Observable<Estados[]>{
-    return this.http.get<Estados[]>('https://servicodados.ibge.gov.br/api/v1/localidades/estados');
+  estadolist(): Observable<Estado[]> {
+    return this.http.get<Estado[]>(this.api)
+      .pipe(
+        map ( origen => {
+          let vetor: Estado[] = [];
+          for ( let o of origen){
+            vetor.push(new Estado(o));
+          }
+          console.log(vetor)
+          return vetor;
+        })
+      );
   }
 
-  municipioslist(e): Observable<Municipios[]>{
-    return this.http.get<Municipios[]>('https://servicodados.ibge.gov.br/api/v1/localidades/estados/'+ e +'/municipios')
+  municipioslist(e): Observable<Municipio[]> {
+    return this.http.get<Municipio[]>(`${this.api}/${e}/municipios`)
+      .pipe(
+        map ( origen1 => {
+          let vetor1: Municipio[] = [];
+          for ( let o of origen1){
+            vetor1.push(new Municipio(o));
+          }
+          console.log(vetor1)
+          return vetor1;
+        })
+      );
   }
-  // getItens(): Item[]{
-  //   return itens;
-  // }
-
 }
 
