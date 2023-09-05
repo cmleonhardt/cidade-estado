@@ -12,7 +12,7 @@ export class Estado {
   }
 
   getDisplayValue(){
-    return this.sigla+" - "+this.nome;
+    return this.sigla+" - "+this.nome + " - "+ this.id;
   }
 
 }

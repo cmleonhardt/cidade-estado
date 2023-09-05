@@ -1,4 +1,5 @@
 import {Component} from '@angular/core';
+import {Estado} from "../../model/estado";
 
 
 @Component({
@@ -8,16 +9,19 @@ import {Component} from '@angular/core';
 
 export class TestePageComponent {
 
-  // recebeMunicipio: string;
-  // recebeEstado: string;
+  recebeMunicipio: string;
+  recebeEstado: string;
+
+
+  meuestado = new Estado({ id: 31, sigla: 'MG', nome: 'Minas Gerais'});
 
   constructor() {  }
 
-  recebeEstado(e){
-
+  getEstado(e){
+    this.recebeEstado = e;
   }
 
-  recebeMunicipio(e){
-    
+  getMunicipio(e){
+    this.recebeMunicipio = e;
   }
 }

@@ -1,4 +1,4 @@
-import {Component, EventEmitter, NgModule, OnInit, Output} from "@angular/core";
+import {Component, EventEmitter, Input, NgModule, OnInit, Output} from "@angular/core";
 import {Estado} from "../../../model/estado";
 import {Municipio} from "../../../model/municipio";
 import {CidadeEstadoService} from "../../services/cidade-estado.service";
@@ -8,6 +8,7 @@ import ArrayStore from 'devextreme/data/array_store';
 import {platformBrowserDynamic} from "@angular/platform-browser-dynamic";
 import {AppModule} from "../../../app.module";
 import {BrowserModule} from "@angular/platform-browser";
+import {of} from "rxjs";
 
 @Component({
   selector: 'select-box-cidade-estado',
@@ -23,7 +24,18 @@ export class SelectBoxCidadeEstadoComponent implements OnInit{
   public estadoArray: Estado[];
   public municipioArray: Municipio[];
   public data: any;
+
+
   dropDownOptions = { height:150 }
+
+  @Input()
+  widthEstado: string = "200px"
+
+  @Input()
+  widthMunicipio: string = "200px"
+
+  @Input()
+  estadoPadrao: Estado;
 
   @Output()
   municipioSelecionado: EventEmitter<string> = new EventEmitter<string>();
@@ -36,28 +48,54 @@ export class SelectBoxCidadeEstadoComponent implements OnInit{
 
   constructor(
     private mainService: CidadeEstadoService) {
-         this.data = new ArrayStore({
-           data: this.estadoArray,
-           key: 'id',
-         }) ;
+         // this.data = new ArrayStore({
+         //   data: this.estadoArray,
+         //   key: 'id',
+         // }) ;
   }
 
   ngOnInit(): void{
-    this.mainService.estadolist().subscribe(res => { this.estadoArray = res;});
+    console.log(1)
+    this.mainService.estadolist().subscribe(res => {
+      console.log(2)
+      this.estadoArray = res;
+      console.log(3)
+      this.estadoPadrao = this.setaEstadoPadrao(this.estadoArray, this.estadoPadrao);
+    });
+    console.log(4)
+
   }
+
 
   getMainService(): any { return this.mainService; }
 
-  onValueChanged(e){
-    this.getMainService().municipioslist(e.value.id).subscribe(mun => { this.municipioArray = mun;});
+  onValueChangedEstado(estado: Estado){
+    this.estadoSelecionado.emit(estado.nome);
 
-    console.log(e.value.id);
-    console.log(e.value.nome);
+    this.getMainService().municipioslist(estado.id).subscribe(mun => { this.municipioArray = mun;});
+
+    // console.log(e.id);
+    // console.log(e.nome);
     // console.log((e.value))
   }
 
-  onValueChangedMunicipio(e){
-    console.log(e.value.nome)
+  onValueChangedMunicipio(cidade: Municipio){
+    this.municipioSelecionado.emit(cidade.nome);
+  }
+
+  setaEstadoPadrao(lista, estadoPadrao): Estado{
+    if (this.estadoArray && estadoPadrao){
+      for ( let e of lista){
+        if (e.sigla == estadoPadrao.sigla){
+          return e;
+        }
+      }
+    }
+    return null;
+  }
+
+  mostraConsole(msg: string) {
+    console.log(msg);
   }
 
 }

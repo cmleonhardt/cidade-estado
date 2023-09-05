@@ -1,50 +1,33 @@
 <form>
 
-
-<!--  <div class="dx-field">-->
-<!--    <div class="dx-field-label">ESTADOS</div>-->
-<!--    <div class="dx-field-value">-->
-<!--      <dx-select-box-->
-<!--        displayExpr="getDisplayValue"-->
-<!--        valueExpr="id"-->
-<!--        [dataSource] = "estadoArray"-->
-<!--        [inputAttr]="{ 'aria-label': 'estadoArray id' }"-->
-<!--        [value]="estadoArray[16].id"-->
-<!--        (onValueChanged) = "onValueChanged($event)"-->
-<!--      ></dx-select-box>-->
-<!--    </div>-->
-<!--  </div>-->
-
-
-    <div class="dx-field">
-      <div class="dx-field-label">ESTADOS</div>
-      <div class="dx-field-value">
-        <dx-select-box
-          [dataSource]  = "estadoArray"
-          displayExpr= "getDisplayValue"
-          [searchEnabled]="true"
-          (onValueChanged) = "onValueChanged($event)"
-          label = "Estado"
-          [dropDownOptions]="dropDownOptions"
-          labelMode="floating"
-        ></dx-select-box>
-      </div>
+  <div class="dx-field">
+    <div class="dx-field-label">ESTADOS</div>
+    <div class="dx-field-value">
+      <dx-select-box
+        [width]="widthEstado"
+        displayExpr="getDisplayValue"
+        [items] = "estadoArray"
+        (onValueChanged) = "onValueChangedEstado($event.value)"
+        [value]="estadoPadrao"
+      ></dx-select-box>
     </div>
+  </div>
 
-
-  <div>
-
-    <dx-select-box
-      [dataSource]  = " municipioArray "
-      valorExpr = "id"
-      displayExpr= "nome"
-      [searchEnabled]="true"
-      label = "Municipio"
-      [dropDownOptions]="dropDownOptions"
-      labelMode="floating"
-      (onValueChanged)="onValueChangedMunicipio($event)"
-    ></dx-select-box>
-
+  <div class="dx-field">
+    <div class="dx-field-label">MUNICIPIO</div>
+    <div class="dx-field-value">
+      <dx-select-box
+        [dataSource]  = " municipioArray "
+        [width]="widthMunicipio"
+        valorExpr = "id"
+        displayExpr= "nome"
+        [searchEnabled]="true"
+        label = "Municipio"
+        [dropDownOptions]="dropDownOptions"
+        labelMode="floating"
+        (onValueChanged)="onValueChangedMunicipio($event.value)"
+      ></dx-select-box>
+    </div>
   </div>
 
 </form>
